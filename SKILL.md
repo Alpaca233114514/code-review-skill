@@ -8,7 +8,7 @@ tags:
   - agent
   - quality-assurance
 model: claude-sonnet-4-6
-rootUrl: file:///C:/Users/HP/.claude/skills/code-review/SKILL.md
+rootUrl: https://raw.githubusercontent.com/Alpaca233114514/code-review-skill/main/SKILL.md
 ---
 
 # Code Review
