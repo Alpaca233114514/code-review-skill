@@ -1,0 +1,33 @@
+{
+  "model": "claude-sonnet-4-6",
+  "examples": [
+    {
+      "prompt": "帮我审查这个PR #42",
+      "aiResponses": [
+        {
+          "type": "thinking",
+          "content": "用户要求审查PR #42。我需要先检查PR是否开放、不是草稿、不是自动化PR，然后收集CLAUDE.md文件，查看PR变更，启动5个并行agent进行审查，最后根据置信度评分过滤问题并发表评论。"
+        },
+        {
+          "type": "toolcall",
+          "toolName": "Bash",
+          "toolInput": {
+            "command": "gh pr view 42 --json state,isDraft,author,title,body"
+          }
+        },
+        {
+          "type": "toolcall",
+          "toolName": "Bash",
+          "toolInput": {
+            "command": "gh pr diff 42"
+          }
+        },
+        {
+          "type": "message",
+          "content": "正在对PR #42进行自动化代码审查。我会启动5个专门的审查agent并行分析：CLAUDE.md合规性、bug扫描、git历史上下文、相关PR交叉引用和代码注释合规性。预计1-2分钟完成。"
+        }
+      ],
+      "model": "claude-sonnet-4-6"
+    }
+  ]
+}
